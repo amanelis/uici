@@ -22,7 +22,3 @@ Under Mac OS X:
    Also, Max OS X does not support gethostbyname_r and gethostbyaddr_r
    so the convertlinux program removes these implementations from the 
    default compilation.
-
-If you run the programs on another system and need to make modifications to
-make them work, please send email to authors@usp.cs.utsa.edu to let us know
-what you did.
