@@ -2,12 +2,9 @@ CC = cc
 COPS =
 LINT = lint
 LOPS = -x -u
-NETLIBS = 
+NETLIBS =
 
 all: client server client_p server_p client_m server_m client_udp server_udp
-
-
-
 
 ddos: DDoS.c restart.c uici.c
 	$(CC) $(COPS) -o ddos DDoS.c restart.c uiciname.c uici.c $(NETLIBS)
@@ -15,30 +12,28 @@ ddos: DDoS.c restart.c uici.c
 myclient: myclient.c restart.c uici.c
 	$(CC) $(COPS) -o myclient myclient.c restart.c uiciname.c uici.c $(NETLIBS)
 
-
-
 server: server.c restart.c uiciname.c uici.c
 	$(CC) $(COPS) -o server server.c restart.c uiciname.c uici.c $(NETLIBS)
 
-client: client.c restart.c uici.c 
+client: client.c restart.c uici.c
 	$(CC) $(COPS) -o client client.c restart.c uiciname.c uici.c $(NETLIBS)
 
 server_r: server.c restart.c uiciname.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_R -o server_r server.c restart.c uiciname.c uici.c $(NETLIBS)
 
-client_r: client.c restart.c uici.c 
+client_r: client.c restart.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_R -o client_r client.c restart.c uiciname.c uici.c $(NETLIBS)
 
 server_p: server.c restart.c uiciname.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_POSIX -o server_p server.c restart.c uiciname.c uici.c $(NETLIBS)
 
-client_p: client.c restart.c uici.c 
+client_p: client.c restart.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_POSIX -o client_p client.c restart.c uiciname.c uici.c $(NETLIBS)
 
 server_m: server.c restart.c uiciname.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_MUTEX -o server_m server.c restart.c uiciname.c uici.c $(NETLIBS)
 
-client_m: client.c restart.c uici.c 
+client_m: client.c restart.c uici.c
 	$(CC) $(COPS) -DREENTRANCY=REENTRANT_MUTEX -o client_m client.c restart.c uiciname.c uici.c $(NETLIBS)
 
 server_udp: server_udp.c restart.c uiciname.c uiciudp.c
@@ -77,8 +72,5 @@ lintus:
 lintuc:
 	$(LINT) $(LOPS) client_udp.c uiciname.c uiciudp.c
 
-
 clean:
 	rm -f *.o ddos server myclient client server_r client_r server_p client_p server_m client_m server_udp client_udp
-
-
